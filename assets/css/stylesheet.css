@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300&family=Reggae+One&family=Varela+Round&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Etiquetas */
+
+h1 {
+    color: white;
+    position: absolute;
+    top: 5%;
+    font-family: 'Reggae One', cursive;
+}
+
+h2 {
+    color: white;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 2rem;
+}
+
+
+/* Id's */
+
+#wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/bgchampionsleague.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+}
+
+#box-slider {
+    width: 90%;
+    background-color: #232f7180;
+    padding: 50px;
+}
+
+#main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#bullets {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* Clases */
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logos {
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+}
+
+.descripcion {
+    color: white;
+    text-align: justify;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+}
+
+.rivals {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.flechas {
+    width: 100px;
+    height: auto;
+}
+
+.animation {
+    animation: animation 2s;
+}
+
+.imgBullets {
+    width: 70px;
+    height: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+
+@keyframes animation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
