@@ -29,6 +29,8 @@ var equipos = {
 
 // Programando el slider
 var sliderActual = 0; // Lo inicializamos en 0
+$("#btnPlay").hide();
+
 cargarInfoEquipo(sliderActual);
 
 function cargarInfoEquipo(sliderActual) {
@@ -44,33 +46,116 @@ function cargarInfoEquipo(sliderActual) {
     $("#descripcionEquipo").css({ opacity: 0 }).animate({ opacity: 1 });
     $("#rival").css({ opacity: 0 }).animate({ opacity: 1 });
 
+    switch (sliderActual) {
+        case 0:
+            {
+                $("#circle0").fadeIn();
+                $("#circle1").fadeOut();
+                $("#circle2").fadeOut();
+                $("#circle3").fadeOut();
+                break;
+            }
+        case 1:
+            {
+                $("#circle1").fadeIn();
+                $("#circle0").fadeOut();
+                $("#circle2").fadeOut();
+                $("#circle3").fadeOut();
+                break;
+            }
+        case 2:
+            {
+                $("#circle2").fadeIn();
+                $("#circle0").fadeOut();
+                $("#circle1").fadeOut();
+                $("#circle3").fadeOut();
+                break;
+            }
+        case 3:
+            {
+                $("#circle3").fadeIn();
+                $("#circle0").fadeOut();
+                $("#circle1").fadeOut();
+                $("#circle2").fadeOut();
+                break;
+            }
+    }
+
 }
 
 // Programando los bullets
 var size = Object.keys(equipos).length;
 for (var i = 0; i < size; i++) {
+    var div = document.createElement("div");
+    var circle = document.createElement("div");
     var img = document.createElement("img");
+    div.classList.add("d-flex-column");
+    circle.classList.add("circle");
     img.classList.add("imgBullets");
+    circle.setAttribute(`id`, "circle" + i);
     img.setAttribute(`id`, "btnBullet" + i);
     img.setAttribute(`src`, equipos[i].logo);
+    div.appendChild(img);
+    div.appendChild(circle);
     var bullets = document.getElementById("bullets");
-    bullets.appendChild(img);
+    bullets.appendChild(div);
 }
+
+$("#circle0").fadeIn();
+$("#circle1").hide();
+$("#circle2").hide();
+$("#circle3").hide();
+
+$("#btnBullet0").hover(() => {
+    $("#btnBullet0").css({ 'cursor': 'pointer' });
+});
+$("#btnBullet1").hover(() => {
+    $("#btnBullet1").css({ 'cursor': 'pointer' });
+});
+$("#btnBullet2").hover(() => {
+    $("#btnBullet2").css({ 'cursor': 'pointer' });
+});
+$("#btnBullet3").hover(() => {
+    $("#btnBullet3").css({ 'cursor': 'pointer' });
+});
+
+
+
 
 $("#btnBullet0").click(() => {
     cargarInfoEquipo(0);
+    $("#circle0").fadeIn();
+    $("#circle1").fadeOut();
+    $("#circle2").fadeOut();
+    $("#circle3").fadeOut();
+    sliderActual = 0;
 });
 
 $("#btnBullet1").click(() => {
     cargarInfoEquipo(1);
+    $("#circle1").fadeIn();
+    $("#circle0").fadeOut();
+    $("#circle2").fadeOut();
+    $("#circle3").fadeOut();
+    sliderActual = 1;
 });
 
 $("#btnBullet2").click(() => {
     cargarInfoEquipo(2);
+    $("#circle2").fadeIn();
+    $("#circle0").fadeOut();
+    $("#circle1").fadeOut();
+    $("#circle3").fadeOut();
+    sliderActual = 2;
 });
 
 $("#btnBullet3").click(() => {
     cargarInfoEquipo(3);
+    $("#circle3").fadeIn();
+    $("#circle0").fadeOut();
+    $("#circle1").fadeOut();
+    $("#circle2").fadeOut();
+    sliderActual = 3;
 });
 
 
@@ -92,7 +177,7 @@ $("#btnIzq").click(() => {
     }
     console.log(sliderActual);
     cargarInfoEquipo(sliderActual);
-})
+});
 
 $("#btnDer").click(() => {
     if (sliderActual == 3) {
@@ -103,4 +188,25 @@ $("#btnDer").click(() => {
     console.log(sliderActual);
     cargarInfoEquipo(sliderActual);
 
-})
+});
+
+var audio = document.getElementById("audio");
+var clicked = false;
+audio.play();
+
+$("#btnPause").hover(() => {
+    $("#btnPause").css({ 'cursor': 'pointer' });
+});
+$("#btnPause").click(() => {
+
+    clicked = !clicked;
+    if (clicked == true) {
+        $("#icon").removeClass("fa-pause");
+        $("#icon").addClass("fa-play");
+        audio.pause();
+    } else {
+        $("#icon").removeClass("fa-play");
+        $("#icon").addClass("fa-pause");
+        audio.play();
+    }
+});
